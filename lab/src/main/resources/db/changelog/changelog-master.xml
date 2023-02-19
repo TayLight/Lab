@@ -1,0 +1,117 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="sanya" id="1671036306684-1">
+        <createTable tableName="contract">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="contract_pk"/>
+            </column>
+            <column name="number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_client" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="contract_pk"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-2">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pk"/>
+            </column>
+            <column name="login" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="numeric(40)"/>
+            <column name="role" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-3">
+        <createIndex indexName="contract_id_uindex" tableName="contract" unique="true">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-4">
+        <createIndex indexName="user_login_uindex" tableName="user" unique="true">
+            <column name="login"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-5">
+        <createTable tableName="account">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_contract" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_client" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-6">
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="client_pk"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patronymic" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(12)"/>
+            <column name="passport_series" type="VARCHAR(255)"/>
+            <column name="passport_number" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-7">
+        <createTable tableName="document">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="document_pk"/>
+            </column>
+            <column name="id_account" type="INTEGER"/>
+            <column name="id_operation" type="INTEGER"/>
+            <column name="id_client" type="INTEGER"/>
+            <column name="id_contract" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-8">
+        <createTable tableName="operation">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="operation_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="restrictions" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-9">
+        <createTable tableName="session">
+            <column name="key" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-10">
+        <addPrimaryKey columnNames="id_contract, id, id_client" constraintName="account_pk" tableName="account"/>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-11">
+        <addForeignKeyConstraint baseColumnNames="id_client,id_contract,id_account" baseTableName="document" constraintName="account___fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id_client,id_contract,id" referencedTableName="account"/>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-12">
+        <addForeignKeyConstraint baseColumnNames="id_client" baseTableName="contract" constraintName="client_fk" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="client"/>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-13">
+        <addForeignKeyConstraint baseColumnNames="id_client,id_contract" baseTableName="account" constraintName="contract___fk" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id_client,id" referencedTableName="contract"/>
+    </changeSet>
+    <changeSet author="sanya" id="1671036306684-14">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="session" constraintName="user_fk" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,33 @@
+<div>
+  <h2 style="text-align: center;">Марки</h2>
+  <p style="text-align: center;">
+    <button  class="btn btn-dark"  routerLink="/mark/add" >Добавить</button>
+  </p>
+</div>
+<div style="text-align: center; " >
+  <br>
+  <table class="table" style="display: inline-block">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let operation of operations">
+      <td>{{operation.name}}</td>
+      <td>
+        <button style="font-size: 12px" (click)="removeOperation(operation)">Удалить</button>
+      </td>
+      <td>
+        <button style="font-size: 12px" [routerLink]="[operation.id]">Редактировать</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
+
+
+

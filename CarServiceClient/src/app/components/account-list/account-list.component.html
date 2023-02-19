@@ -1,0 +1,35 @@
+<div>
+  <h2 style="text-align: center;">Организации</h2>
+  <p style="text-align: center;">
+    <button  class="btn btn-dark"  routerLink="/organization/add" >Добавить</button>
+  </p>
+</div>
+<div style="text-align: center; " >
+  <br>
+  <table class="table" style="display: inline-block">
+    <thead>
+    <tr>
+      <th>Название</th>
+      <th>Адресс</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let organization of accounts">
+      <td>{{organization.contract}}</td>
+      <td>{{organization.number}}</td>
+      <td>
+        <button style="font-size: 12px" (click)="removeOrganization(organization)">Удалить</button>
+      </td>
+      <td>
+        <button style="font-size: 12px" [routerLink]="[organization.id]">Редактировать</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
+
+
+

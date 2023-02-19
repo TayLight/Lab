@@ -1,0 +1,41 @@
+<div>
+  <h2 style="text-align: center;">Автомобили</h2>
+  <p style="text-align: center;">
+    <button  class="btn btn-dark"  routerLink="/car/add" >Добавить</button>
+  </p>
+</div>
+<div style="text-align: center; " >
+  <br>
+  <table class="table" style="display: inline-block">
+    <thead>
+    <tr>
+      <th>Гос номер</th>
+      <th>VIN</th>
+      <th>Марка</th>
+      <th>Цена</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{client.last_name}}</td>
+      <td>{{client.first_name}}</td>
+      <td>{{client.phone_number}}</td>
+      <td>{{client.passport_series}}</td>
+      <td>{{client.passport_number}}</td>
+      <td>{{client.address}}</td>
+      <td>
+        <button style="font-size: 12px" (click)="removeCar(client)">Удалить</button>
+      </td>
+      <td>
+        <button style="font-size: 12px" [routerLink]="[client.id]">Редактировать</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
+
+
+

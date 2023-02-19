@@ -1,0 +1,22 @@
+<div class="p-3 bg-dark text-white">
+  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/contract" class="nav-link px-2 text-secondary">Контракты</a></li>
+      <li><a href="/client" class="nav-link px-2 text-white">Клиент</a></li>
+      <li><a href="/document" class="nav-link px-2 text-white">Документ</a></li>
+      <li><a href="/operation" class="nav-link px-2 text-white">Операции</a></li>
+      <li><a href="/organization" class="nav-link px-2 text-white">Организации</a></li>
+    </ul>
+
+    <div class="text-end">
+      <h4 *ngIf="isDataLoaded" class="nav-link px-2 text-white">Здравствуйте, {{this.user.username}}!</h4>
+      <button *ngIf="isLoggedIn" type="button" class="btn btn-outline-light me-2" (click)="logout()" >Logout</button>
+      <button *ngIf="!isLoggedIn" type="button" class="btn btn-outline-light me-2" (click)="login()">Login</button>
+      <button *ngIf="!isLoggedIn" type="button" class="btn btn-warning" (click)="register()">Register</button>
+    </div>
+  </div>
+</div>

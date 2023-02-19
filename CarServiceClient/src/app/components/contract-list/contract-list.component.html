@@ -1,0 +1,40 @@
+<p style="text-align: center;">
+  <button  class="btn btn-dark" style="position: absolute" routerLink="/service/add" >Добавить</button>
+</p>
+<br>
+<br>
+<div style="text-align: center; " >
+  <br>
+  <table class="table" style="display: inline-block">
+    <thead>
+    <tr>
+      <th>VIN</th>
+      <th>Гос номер</th>
+      <th>Марка</th>
+      <th>Название сервиса</th>
+      <th>Дата начала работ</th>
+      <th>Дата окончания работ</th>
+      <th>Цена</th>
+      <th>Организация</th>
+      <th>Сотрудник</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let contract of contracts; let i = index">
+      <td>{{contract.client}}</td>
+      <td>
+        <button style="font-size: 12px" (click)="removeContract(contract)">Удалить</button>
+      </td>
+      <td>
+        <button style="font-size: 12px" [routerLink]="[contract.id]">Редактировать</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>
+
+
+
