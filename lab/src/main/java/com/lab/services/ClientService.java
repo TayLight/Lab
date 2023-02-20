@@ -26,7 +26,7 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public void deleteAllById(List<Integer> ids) {
-        clientRepository.deleteAllById(ids);
+    public void deleteAllById(Integer id) {
+        clientRepository.deleteById(id);
     }
 }

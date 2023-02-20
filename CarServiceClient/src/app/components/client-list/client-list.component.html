@@ -1,5 +1,5 @@
 <div>
-  <h2 style="text-align: center;">Автомобили</h2>
+  <h2 style="text-align: center;">Клиенты</h2>
   <p style="text-align: center;">
     <button  class="btn btn-dark"  routerLink="/car/add" >Добавить</button>
   </p>
@@ -9,21 +9,23 @@
   <table class="table" style="display: inline-block">
     <thead>
     <tr>
-      <th>Гос номер</th>
-      <th>VIN</th>
-      <th>Марка</th>
-      <th>Цена</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Телефон</th>
+      <th>Серия</th>
+      <th>Номер</th>
+      <th>Адрес</th>
       <th></th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let client of clients">
-      <td>{{client.last_name}}</td>
-      <td>{{client.first_name}}</td>
-      <td>{{client.phone_number}}</td>
-      <td>{{client.passport_series}}</td>
-      <td>{{client.passport_number}}</td>
+      <td>{{client.firstName}}</td>
+      <td>{{client.lastName}}</td>
+      <td>{{client.phoneNumber}}</td>
+      <td>{{client.passportSeries}}</td>
+      <td>{{client.passportNumber}}</td>
       <td>{{client.address}}</td>
       <td>
         <button style="font-size: 12px" (click)="removeCar(client)">Удалить</button>

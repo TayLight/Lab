@@ -37,7 +37,6 @@ export class DocumentUpdateComponent implements OnInit {
   update(): void{
     this.documentService.updateDocument({
       id: this.updateDocument.id=this.router.snapshot.params['id_updateDocument'],
-      name:this.updateForm.value.name,
       operation:{
         id:this.updateForm.value.operation.id,
         name:this.updateForm.value.operation.name,
@@ -48,14 +47,15 @@ export class DocumentUpdateComponent implements OnInit {
         number: this.updateForm.value.account.number,
         contract: {
           id: this.updateForm.value.contract.id,
+          number: this.updateForm.value.number,
           client: {
             id: this.updateForm.value.id,
-            first_name:this.updateForm.value.first_name,
-            last_name:this.updateForm.value.last_name,
+            firstName:this.updateForm.value.first_name,
+            lastName:this.updateForm.value.last_name,
             address:this.updateForm.value.address,
-            passport_series:this.updateForm.value.address,
-            passport_number:this.updateForm.value.address,
-            phone_number:this.updateForm.value.address,
+            passportSeries:this.updateForm.value.address,
+            passportNumber:this.updateForm.value.address,
+            phoneNumber:this.updateForm.value.address,
           }
         }
       },

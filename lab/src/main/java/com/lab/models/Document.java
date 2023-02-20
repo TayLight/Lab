@@ -1,27 +1,16 @@
 package com.lab.models;
 
-
-import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Document {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "id_client", referencedColumnName = "id_client"),
-            @JoinColumn(name = "id_contract", referencedColumnName = "id_contract"),
-            @JoinColumn(name = "id_account", referencedColumnName = "id")
-    })
+    @ManyToOne(cascade = CascadeType.MERGE )
+    @JoinColumn(name = "id_account")
     private Account account;
 
     @ManyToOne

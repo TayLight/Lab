@@ -1,34 +1,35 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Contract} from "../models/contract";
 
-const CONTRACT_API = 'http://localhost:8080/contract/';
+const CONTRACT_API = 'http://localhost:8080/api/contract/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContractService {
 
-  constructor(private http: HttpClient) { }
-
-  getAllContract() : Observable<any>{
-    return this.http.get(CONTRACT_API+'all');
+  constructor(private http: HttpClient) {
   }
 
-  createContract(contract: Contract) : Observable<any>{
-    return this.http.post(CONTRACT_API+'add',contract);
+  getAllContract(): Observable<any> {
+    return this.http.get(CONTRACT_API);
   }
 
-  updateContract(contract: Contract) : Observable<any>{
-    return this.http.post(CONTRACT_API+'update',contract);
+  createContract(contract: Contract): Observable<any> {
+    return this.http.post(CONTRACT_API, contract);
   }
 
-  getContractById(id:number) : Observable<any>{
-    return this.http.get(CONTRACT_API+id);
+  updateContract(contract: Contract): Observable<any> {
+    return this.http.post(CONTRACT_API, contract);
   }
 
-  deleteContract(id: number | undefined):Observable<any>{
-    return this.http.post(CONTRACT_API+'delete/'+id,null);
+  getContractById(id: number): Observable<any> {
+    return this.http.get(CONTRACT_API + id);
+  }
+
+  deleteContract(id: number | undefined): Observable<any> {
+    return this.http.post(CONTRACT_API + id, null);
   }
 }

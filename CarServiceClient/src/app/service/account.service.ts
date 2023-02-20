@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Account} from "../models/account";
-const ACCOUNT_API = 'http://localhost:8080/account/';
+const ACCOUNT_API = 'http://localhost:8080/api/account/';
 @Injectable({
   providedIn: 'root'
 })

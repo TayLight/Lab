@@ -43,14 +43,15 @@ export class ContractAddComponent implements OnInit {
 
   createService():void{
     this.contractService.createContract({
+      number: this.addForm.value.number,
       client: {
         id: this.addForm.value.client.id,
         address: this.addForm.value.client.address,
-        passport_number: this.addForm.value.client.passport_number,
-        passport_series: this.addForm.value.client.passport_series,
-        phone_number: this.addForm.value.client.phone_number,
-        first_name: this.addForm.value.client.first_name,
-        last_name: this.addForm.value.client.last_name,
+        passportNumber: this.addForm.value.client.passport_number,
+        passportSeries: this.addForm.value.client.passport_series,
+        phoneNumber: this.addForm.value.client.phone_number,
+        firstName: this.addForm.value.client.first_name,
+        lastName: this.addForm.value.client.last_name,
       },
     }).subscribe(data=>{
       this.addCarService=data;

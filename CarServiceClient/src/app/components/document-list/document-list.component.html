@@ -1,5 +1,5 @@
 <div>
-  <h2 style="text-align: center;">Сотрудники</h2>
+  <h2 style="text-align: center;">Документы</h2>
   <p style="text-align: center;">
     <button  class="btn btn-dark"  routerLink="/employee/add" >Добавить</button>
   </p>
@@ -9,18 +9,16 @@
   <table class="table" style="display: inline-block">
     <thead>
     <tr>
-      <th>Имя</th>
-      <th>Зарплата</th>
-      <th>Возраст</th>
+      <th>Название</th>
+      <th>Аккаунт</th>
       <th></th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let document of documents">
-      <td>{{document.name}}</td>
-      <td>{{document.account}}</td>
-      <td>{{document.account}}</td>
+      <td>{{document.operation.name}}</td>
+      <td>{{document.account.contract.client.lastName}}</td>
       <td>
         <button style="font-size: 12px" (click)="removeEmployee(document)">Удалить</button>
       </td>

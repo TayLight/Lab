@@ -31,9 +31,9 @@ public class ClientController {
         return clientService.getAll();
     }
 
-    @DeleteMapping(value = "{ids}")
-    public void deleteAllById(@PathVariable("ids") List<Integer> ids) {
-        clientService.deleteAllById(ids);
+    @DeleteMapping(value = "{id}")
+    public void deleteAllById(@PathVariable("id") int id) {
+        clientService.deleteAllById(id);
     }
 }
 

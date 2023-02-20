@@ -50,14 +50,15 @@ export class ContractUpdateComponent implements OnInit {
   update(): void {
     this.contractService.updateContract({
       id: this.updateContract.id = this.router.snapshot.params['id_updateContract'],
+      number: this.updateForm.value.number,
       client: {
         id: this.updateForm.value.client.id,
         address: this.updateForm.value.client.address,
-        passport_number: this.updateForm.value.client.passport_number,
-        passport_series: this.updateForm.value.client.passport_series,
-        phone_number: this.updateForm.value.client.phone_number,
-        first_name: this.updateForm.value.client.first_name,
-        last_name: this.updateForm.value.client.last_name,
+        passportNumber: this.updateForm.value.client.passport_number,
+        passportSeries: this.updateForm.value.client.passport_series,
+        phoneNumber: this.updateForm.value.client.phone_number,
+        firstName: this.updateForm.value.client.first_name,
+        lastName: this.updateForm.value.client.last_name,
       },
     }).subscribe(data => {
       this.updateContract = data;

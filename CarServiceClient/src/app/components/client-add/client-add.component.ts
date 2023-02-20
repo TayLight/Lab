@@ -38,12 +38,12 @@ export class ClientAddComponent implements OnInit {
 
   createCar(): void{
     this.clientService.createClient({
-      first_name:this.addForm.value.first_name,
-      last_name:this.addForm.value.last_name,
+      firstName:this.addForm.value.first_name,
+      lastName:this.addForm.value.last_name,
       address:this.addForm.value.address,
-      passport_series:this.addForm.value.address,
-      passport_number:this.addForm.value.address,
-      phone_number:this.addForm.value.address,
+      passportSeries:this.addForm.value.address,
+      passportNumber:this.addForm.value.address,
+      phoneNumber:this.addForm.value.address,
     }).subscribe(data => {
       this.addClient = data;
     })

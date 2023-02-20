@@ -2,6 +2,7 @@ package com.lab.services;
 
 import com.lab.models.Contract;
 import com.lab.repository.ContractRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,5 +1,5 @@
 <div>
-  <h2 style="text-align: center;">Организации</h2>
+  <h2 style="text-align: center;">Аккаунты</h2>
   <p style="text-align: center;">
     <button  class="btn btn-dark"  routerLink="/organization/add" >Добавить</button>
   </p>
@@ -9,21 +9,21 @@
   <table class="table" style="display: inline-block">
     <thead>
     <tr>
-      <th>Название</th>
-      <th>Адресс</th>
+      <th>Клиент контракта</th>
+      <th>Номер</th>
       <th></th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let organization of accounts">
-      <td>{{organization.contract}}</td>
-      <td>{{organization.number}}</td>
+    <tr *ngFor="let account of accounts">
+      <td>{{account.contract.client.firstName}}</td>
+      <td>{{account.number}}</td>
       <td>
-        <button style="font-size: 12px" (click)="removeOrganization(organization)">Удалить</button>
+        <button style="font-size: 12px" (click)="removeOrganization(account)">Удалить</button>
       </td>
       <td>
-        <button style="font-size: 12px" [routerLink]="[organization.id]">Редактировать</button>
+        <button style="font-size: 12px" [routerLink]="[account.id]">Редактировать</button>
       </td>
     </tr>
     </tbody>

@@ -1,9 +1,6 @@
 package com.lab.models;
 
-
 import javax.persistence.*;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity
 @Table
@@ -18,9 +15,6 @@ public class Contract {
 
     @Column(name = "number", nullable = false)
     private Integer number;
-
-    @OneToMany(mappedBy = "contract")
-    private List<Account> accounts = new LinkedList<>();
 
 
     public Integer getNumber() {

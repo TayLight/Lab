@@ -1,11 +1,8 @@
 package com.lab.models;
 
-import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Account {
@@ -16,11 +13,9 @@ public class Account {
     private Long id;
 
     @MapsId
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumns({
-            @JoinColumn(name = "id_client", referencedColumnName = "id_client", nullable = false),
-            @JoinColumn(name = "id_contract", referencedColumnName = "id", nullable = false)
-    })
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_contract")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Contract contract;
 
     @Column(name = "number", nullable = false)
