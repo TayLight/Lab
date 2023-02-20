@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import {AccountService} from "../../service/account.service";
 import {Account} from "../../models/account";
+import {Contract} from "../../models/contract";
+import {ContractService} from "../../service/contract.service";
 
 @Component({
   selector: 'app-account-add',
@@ -13,14 +15,19 @@ import {Account} from "../../models/account";
 export class AccountAddComponent implements OnInit {
   addForm!:FormGroup;
   addOrganization!: Account;
+  contructs!:Contract[];
 
   constructor(private accountService: AccountService,
               private router: ActivatedRoute,
               private fb: FormBuilder,
-              private location: Location,) { }
+              private location: Location,
+              private contractService: ContractService) { }
 
   ngOnInit(): void {
     this.addForm = this.createAddForm();
+    this.contractService.getAllContract().subscribe(data =>{
+      this.contructs = data;
+    });
   }
 
   createAddForm():FormGroup{

@@ -32,7 +32,7 @@ export class OperationAddComponent implements OnInit {
   createOperation():void{
     this.operationService.createOperation({
       name:this.addForm.value.name,
-      restrictions:this.addForm.value.restrictions
+      restrictions:this.addForm.value.restrictions,
     }).subscribe(data=>{
       this.addOperation=data;
     })

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CarServiceClient/CarServiceClient.iml" filepath="$PROJECT_DIR$/CarServiceClient/CarServiceClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CarServiceParent.iml" filepath="$PROJECT_DIR$/CarServiceParent.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Lab.iml" filepath="$PROJECT_DIR$/.idea/Lab.iml" />
     </modules>
   </component>

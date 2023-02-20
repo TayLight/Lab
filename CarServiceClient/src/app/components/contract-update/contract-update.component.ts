@@ -15,7 +15,7 @@ import {Client} from "../../models/car";
 export class ContractUpdateComponent implements OnInit {
   updateForm!: FormGroup;
   updateContract!: Contract;
-  client!:Client[];
+  clients!:Client[];
 
   constructor(private contractService: ContractService,
               private fb: FormBuilder,
@@ -29,7 +29,7 @@ export class ContractUpdateComponent implements OnInit {
       this.updateContract = data
     });
     this.clientService.getAllClients().subscribe(data => {
-      this.client = data;
+      this.clients = data;
     });
     this.updateForm = this.createUpdateForm();
   }

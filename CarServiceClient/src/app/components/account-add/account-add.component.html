@@ -20,12 +20,15 @@
                     </div>
                   </div>
 
+
+
                   <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text"  class="form-control"
-                             formControlName="address" />
-                      <label class="form-label">Адресс</label>
+                      <select formControlName="car" class="form-control">
+                        <option *ngFor="let contract of contructs" [ngValue]="contract">{{contract.number }}</option>
+                      </select>
+                      <label class="form-label" >Контракт</label>
                     </div>
                   </div>
 

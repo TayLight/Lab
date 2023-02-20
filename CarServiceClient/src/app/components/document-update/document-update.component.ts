@@ -4,6 +4,10 @@ import {Document} from "../../models/document";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import {DocumentService} from "../../service/document.service";
+import {Account} from "../../models/account";
+import {Operation} from "../../models/operation";
+import {AccountService} from "../../service/account.service";
+import {OperationService} from "../../service/operation.service";
 
 @Component({
   selector: 'app-employee-update',
@@ -13,15 +17,25 @@ import {DocumentService} from "../../service/document.service";
 export class DocumentUpdateComponent implements OnInit {
   updateForm!:FormGroup;
   updateDocument!: Document;
+  accounts!:Account[];
+  operations!:Operation[];
 
   constructor(private documentService: DocumentService,
               private router: ActivatedRoute,
               private fb: FormBuilder,
-              private location: Location,) { }
+              private location: Location,
+              private accountService: AccountService,
+              private operationService: OperationService,) { }
 
   ngOnInit(): void {
     this.documentService.getDocumentById(this.router.snapshot.params['id_updateDocument']).subscribe(data=> {
       this.updateDocument = data
+    });
+    this.accountService.getAllAccounts().subscribe(data =>{
+      this.accounts = data;
+    });
+    this.operationService.getAllOperations().subscribe(data =>{
+      this.operations = data;
     });
     this.updateForm = this.createUpdateForm();
   }

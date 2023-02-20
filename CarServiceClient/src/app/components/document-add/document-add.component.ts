@@ -4,6 +4,10 @@ import {Document} from "../../models/document";
 import {DocumentService} from "../../service/document.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
+import {Account} from "../../models/account";
+import {AccountService} from "../../service/account.service";
+import {OperationService} from "../../service/operation.service";
+import {Operation} from "../../models/operation";
 
 @Component({
   selector: 'app-employee-add',
@@ -13,14 +17,24 @@ import {Location} from "@angular/common";
 export class DocumentAddComponent implements OnInit {
   addForm!:FormGroup;
   addDocument!: Document;
+  accounts!:Account[];
+  operations!:Operation[];
 
   constructor(private documentService: DocumentService,
               private router: ActivatedRoute,
               private fb: FormBuilder,
-              private location: Location,) { }
+              private location: Location,
+              private accountService: AccountService,
+              private operationService: OperationService,) { }
 
   ngOnInit(): void {
     this.addForm = this.createAddForm();
+    this.accountService.getAllAccounts().subscribe(data =>{
+      this.accounts = data;
+    });
+    this.operationService.getAllOperations().subscribe(data =>{
+      this.operations = data;
+    });
   }
 
   createAddForm():FormGroup{
